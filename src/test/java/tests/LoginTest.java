@@ -4,11 +4,11 @@ import config.AppiumConfig;
 import models.Auth;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Test;
 import screens.AuthenticationScreen;
 import screens.ContactListScreen;
-import screens.SplashScreen;
+
 
 public class LoginTest extends AppiumConfig {
     //Classic
@@ -57,6 +57,14 @@ public class LoginTest extends AppiumConfig {
         new AuthenticationScreen(driver).fillLoginRegistrationForm(Auth.builder()
                 .email("lockergmail.com")
                 .password("Qwerty1234!")
+                .build()).submitLoginNegative().isErrorMessageContainsText("Login or Password incorrect");
+
+    }
+    @Test
+    public void loginWrongPassword() {
+        new AuthenticationScreen(driver).fillLoginRegistrationForm(Auth.builder()
+                .email("locker@gmail.com")
+                .password("Qwerty1234")
                 .build()).submitLoginNegative().isErrorMessageContainsText("Login or Password incorrect");
 
     }
