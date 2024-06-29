@@ -10,6 +10,6 @@ public class LaunchTest extends AppiumConfig {
     public void launch(){
         String version = new SplashScreen(driver).getCurrentVersion();
         Assert.assertTrue(version.contains("1.0.0"));
-        //ss
+        //sss
     }
 }
