@@ -26,7 +26,7 @@ public class AddNewContactScreen extends BaseScreen{
     AndroidElement createBtn;
 
     public AddNewContactScreen fillContactForm(Contact contact){
-        should(nameEditText,5);
+        should(nameEditText,20);
         type(nameEditText,contact.getName());
         type(lastNameEditText,contact.getLastName());
         type(emailEditText,contact.getEmail());
@@ -39,4 +39,13 @@ public class AddNewContactScreen extends BaseScreen{
         createBtn.click();
         return new ContactListScreen(driver);
     }
+    public AddNewContactScreen submitContactFormNegative(){
+        createBtn.click();
+        return this;
+    }
+    public AddNewContactScreen isErrorContainsText(String text){
+        checkAlertText(text);
+        return this;
+    }
+
 }
